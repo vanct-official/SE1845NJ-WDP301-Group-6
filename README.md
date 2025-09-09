@@ -26,15 +26,15 @@
 ---
 
 ## 🚀 Cách chạy dự án
-1. Clone repo:
+   1. Clone repo:
    ```
    git clone https://github.com/vanct-official/wdp301_se1845nj_g8.git
-  ``
-2. Cài đặt dependencies:
-```
-npm install
-```
-3. Chạy dự án:
-```
-npm start
-```
+   ```
+   2. Cài đặt dependencies:
+   ```
+   npm install
+   ```
+   3. Chạy dự án:
+   ```
+   npm start
+   ```
