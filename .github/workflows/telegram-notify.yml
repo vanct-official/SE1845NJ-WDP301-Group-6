@@ -5,6 +5,8 @@ on:
   pull_request:
   release:
     types: [published]
+  issues:
+    types: [opened, closed]
 
 jobs:
   notify:
@@ -16,6 +18,7 @@ jobs:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           TELEGRAM_THREAD_ID: ${{ secrets.TELEGRAM_THREAD_ID }}
+          REPO_URL: "https://github.com/${{ github.repository }}"
         run: |
           TIMESTAMP=$(date +"%Y-%m-%d %H:%M:%S")
 
@@ -23,26 +26,38 @@ jobs:
             ACTOR="${{ github.actor }}"
             BRANCH="${{ github.ref_name }}"
             COMMIT_MSG="${{ github.event.head_commit.message }}"
-            TITLE="Push"
+            COMMIT_URL="${{ env.REPO_URL }}/commit/${{ github.sha }}"
+            TITLE="Code Push"
 
-            TEXT=$'*WDP301 - Group 8*\nTime stamp: '"$TIMESTAMP"$'\nTitle: '"$TITLE"$'\nDear team,\nActor: '"$ACTOR"$'\nBranch: '"$BRANCH"$'\nCommit: '"$COMMIT_MSG"$'\n\nRegard!'
+            TEXT=$'*WDP301 - Group 8*\nTime: '"$TIMESTAMP"$'\nEvent: '"$TITLE"$'\n\nDear team,\n- Actor: '"$ACTOR"$'\n- Branch: '"$BRANCH"$'\n- Commit: '"$COMMIT_MSG"$'\n[🔗 View Commit]('"$COMMIT_URL"$')\n\nBest regards,'
 
           elif [ "${{ github.event_name }}" = "pull_request" ]; then
             ACTOR="${{ github.actor }}"
             FROM_BRANCH="${{ github.head_ref }}"
             TO_BRANCH="${{ github.base_ref }}"
             PR_TITLE="${{ github.event.pull_request.title }}"
+            PR_URL="${{ github.event.pull_request.html_url }}"
             TITLE="Pull Request"
 
-            TEXT=$'*WDP301 - Group 8*\nTime stamp: '"$TIMESTAMP"$'\nTitle: '"$TITLE"$'\nDear team,\nActor: '"$ACTOR"$'\nBranch: '"$FROM_BRANCH"' → '"$TO_BRANCH"$'\nCommit: '"$PR_TITLE"$'\n\nRegard!'
+            TEXT=$'*WDP301 - Group 8*\nTime: '"$TIMESTAMP"$'\nEvent: '"$TITLE"$'\n\nDear team,\n- Actor: '"$ACTOR"$'\n- Branch: '"$FROM_BRANCH"' → '"$TO_BRANCH"$'\n- Title: '"$PR_TITLE"$'\n[🔗 View Pull Request]('"$PR_URL"$')\n\nBest regards,'
 
           elif [ "${{ github.event_name }}" = "release" ]; then
             ACTOR="${{ github.actor }}"
             RELEASE_TAG="${{ github.event.release.tag_name }}"
             RELEASE_NAME="${{ github.event.release.name }}"
-            TITLE="Release"
+            RELEASE_URL="${{ github.event.release.html_url }}"
+            TITLE="New Release"
 
-            TEXT=$'*WDP301 - Group 8*\nTime stamp: '"$TIMESTAMP"$'\nTitle: '"$TITLE"$'\nDear team,\nActor: '"$ACTOR"$'\nBranch: main\nCommit: '"$RELEASE_TAG"' - '"$RELEASE_NAME"$'\n\nRegard!'
+            TEXT=$'*WDP301 - Group 8*\nTime: '"$TIMESTAMP"$'\nEvent: '"$TITLE"$'\n\nDear team,\n- Actor: '"$ACTOR"$'\n- Release: '"$RELEASE_TAG"' - '"$RELEASE_NAME"$'\n[🔗 View Release]('"$RELEASE_URL"$')\n\nBest regards,'
+
+          elif [ "${{ github.event_name }}" = "issues" ]; then
+            ACTOR="${{ github.actor }}"
+            ISSUE_TITLE="${{ github.event.issue.title }}"
+            ISSUE_URL="${{ github.event.issue.html_url }}"
+            ACTION="${{ github.event.action }}"
+            TITLE="Issue $ACTION"
+
+            TEXT=$'*WDP301 - Group 8*\nTime: '"$TIMESTAMP"$'\nEvent: '"$TITLE"$'\n\nDear team,\n- Actor: '"$ACTOR"$'\n- Issue: '"$ISSUE_TITLE"$'\n[🔗 View Issue]('"$ISSUE_URL"$')\n\nBest regards,'
           fi
 
           curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage" \
