@@ -29,7 +29,7 @@
 1. Clone repo:
    ```
    git clone https://github.com/vanct-official/wdp301_se1845nj_g8.git
-  ```
+  ``
 2. Cài đặt dependencies:
 ```
 npm install
