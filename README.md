@@ -1,9 +1,9 @@
 # 📌 Tên Dự Án
 
 ## 👥 Nhóm Thực Hiện
-**Tên nhóm:** Nhóm 8
-**Môn học:** WDP301 - Dự án phát triển Web
-**Giảng viên hướng dẫn:** Lê Phương Chi (ChiLP@fe.edu.vn) 
+- **Tên nhóm:** Nhóm 8
+- **Môn học:** WDP301 - Dự án phát triển Web
+- **Giảng viên hướng dẫn:** Lê Phương Chi (ChiLP@fe.edu.vn) 
 
 ---
 
