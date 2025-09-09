@@ -1,0 +1,16 @@
+name: Telegram Notify
+
+on:
+  push:
+    branches: [ main ]   # đổi nếu bạn dùng nhánh khác
+  workflow_dispatch:     # cho phép chạy thủ công từ tab Actions
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify on push
+        run: |
+          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" \
+            -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
+            -d text=$'🔔 Repo: ${{ github.repository }}\n👤 Actor: ${{ github.actor }}\n🌿 Branch: ${{ github.ref_name }}\n✅ Commit: ${{ github.sha }}\n📝 Message: ${{ github.event.head_commit.message || '' }}'
