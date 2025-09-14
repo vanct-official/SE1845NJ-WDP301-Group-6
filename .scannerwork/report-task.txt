@@ -1,0 +1,6 @@
+projectKey=vanct-official_wdp301_se1845nj_g8_d47d56dd-971f-47a6-bdc3-28a0eb19554d
+serverUrl=http://localhost:9000
+serverVersion=25.9.0.112764
+dashboardUrl=http://localhost:9000/dashboard?id=vanct-official_wdp301_se1845nj_g8_d47d56dd-971f-47a6-bdc3-28a0eb19554d
+ceTaskId=2b599994-c5e5-4828-9b8c-f4e788934d87
+ceTaskUrl=http://localhost:9000/api/ce/task?id=2b599994-c5e5-4828-9b8c-f4e788934d87
