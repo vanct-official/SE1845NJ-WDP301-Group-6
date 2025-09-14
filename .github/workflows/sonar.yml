@@ -1,0 +1,27 @@
+name: SonarQube Scan
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  sonarQube:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Node (nếu cần)
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Run SonarQube Scan
+        run: |
+          npm install -g @sonar/scan
+          sonar-scanner \
+            -Dsonar.projectKey=myproject \
+            -Dsonar.sources=back-end/src,front-end/src \
+            -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
