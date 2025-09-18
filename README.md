@@ -3,7 +3,7 @@
 ## 👥 Nhóm Thực Hiện
 - **Tên nhóm:** Nhóm 6
 - **Môn học:** WDP301 - Dự án phát triển Web
-- **Giảng viên hướng dẫn:** Lê Phương Chi (ChiLP@fe.edu.vn) 
+- **Giảng viên hướng dẫn:** Lê Phương Chi (ChiLP2@fe.edu.vn) 
 
 ---
 
@@ -28,13 +28,27 @@
 ## 🚀 Cách chạy dự án
    1. Clone repo:
    ```
-   git clone https://github.com/vanct-official/wdp301_se1845nj_g8.git
+   git clone https://github.com/vanct-official/SE1845NJ-WDP301-Group-6.git
    ```
    2. Cài đặt dependencies:
+   - Vào thư mục có chứa các folder back-end và front-end, nhập các lệnh sau đây để tải dependencies cho back-end:
    ```
+   cd back-end
+   npm install
+   ```
+   - Sau đó, tải dependencies cho front-end:
+   ```
+   cd ../front-end
    npm install
    ```
    3. Chạy dự án:
+   - Vào thư mục có chứa các folder back-end và front-end, nhập các lệnh sau đây để chạy `npm start` cho back-end:
    ```
+   cd back-end
+   npm start
+   ```
+   - Sau đó, chạy `npm start` cho front-end:
+   ```
+   cd ../front-end
    npm start
    ```
