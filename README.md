@@ -1,4 +1,4 @@
-# 📌 Tên Dự Án
+# 📌 MẠNG XÃ HỘI - ECHONET
 
 ## 👥 Nhóm Thực Hiện
 - **Tên nhóm:** Nhóm 6
