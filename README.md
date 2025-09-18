@@ -22,7 +22,7 @@
 - Mục tiêu: [Mô tả ngắn gọn mục tiêu của dự án]  
 - Công nghệ sử dụng:
   
-  | Loại       | Công nghệ sử dụng |
+| Loại       | Công nghệ sử dụng |
 |------------|-------------------|
 | Back-end   | ExpressJS          |
 | Front-end  | ReactJS            |
