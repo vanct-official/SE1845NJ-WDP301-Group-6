@@ -22,11 +22,11 @@
 - Mục tiêu: [Mô tả ngắn gọn mục tiêu của dự án]  
 - Công nghệ sử dụng:
   
-  | Loại | Công nghệ sử dụng |
-|-----------------|-----------|
-| Back-end| ExpressJS |
-| Front-end|ReactJS |
-| Database| MongoDB|
+  | Loại       | Công nghệ sử dụng |
+|------------|-------------------|
+| Back-end   | ExpressJS          |
+| Front-end  | ReactJS            |
+| Database   | MongoDB            |
 
 - Kết quả mong đợi: [Web/App/... hoạt động thế nào]  
 
